@@ -1,4 +1,4 @@
-import { NextPage } from "next/types";
+import { type NextPage } from "next/types";
 import * as Tabs from "@radix-ui/react-tabs";
 import { api } from "~/utils/api";
 import { useState } from "react";
@@ -29,19 +29,19 @@ const TopGenresPage: NextPage = () => {
       >
         <Tabs.List className="tabs mb-4">
           <Tabs.Trigger
-            className="tab-bordered tab tab-lg data-[state=active]:tab-active"
+            className="tab tab-bordered tab-lg data-[state=active]:tab-active"
             value={TimeRanges.fourWeeks}
           >
             Last 4 weeks
           </Tabs.Trigger>
           <Tabs.Trigger
-            className="tab-bordered tab tab-lg data-[state=active]:tab-active"
+            className="tab tab-bordered tab-lg data-[state=active]:tab-active"
             value={TimeRanges.sixMonths}
           >
             Last 6 months
           </Tabs.Trigger>
           <Tabs.Trigger
-            className="tab-bordered tab tab-lg data-[state=active]:tab-active"
+            className="tab tab-bordered tab-lg data-[state=active]:tab-active"
             value={TimeRanges.allTime}
           >
             All time
@@ -84,7 +84,7 @@ function GenreList(props: GenreListProps) {
   return (
     <div className="flex flex-col gap-4 text-lg">
       {data.topGenres.map(({ name, value }, index) => (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2" key={index}>
           {index + 1}. {capitalize(name)}
           <progress
             className="progress progress-primary h-6"
@@ -98,7 +98,7 @@ function GenreList(props: GenreListProps) {
 }
 
 function capitalize(string: string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
+  return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 export default TopGenresPage;

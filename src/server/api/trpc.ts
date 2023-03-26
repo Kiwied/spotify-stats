@@ -23,6 +23,7 @@ import { prisma } from "~/server/db";
  *
  * @see https://trpc.io/docs/context
  */
+// eslint-disable-next-line @typescript-eslint/require-await
 export const createTRPCContext = async (opts: CreateNextContextOptions) => {
   return {
     prisma,

@@ -1,8 +1,14 @@
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
+/* eslint-disable @typescript-eslint/no-unsafe-argument */
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 import { z } from "zod";
 import { createTRPCRouter, protectedProcedure } from "~/server/api/trpc";
 import { getHumanReadableTimeRange, TimeRanges } from "~/pages/tracks";
 import getSpotifyAccessToken from "~/server/utils/getSpotifyAccessToken";
-import { TRPCError } from "@trpc/server";
 
 export const spotifyRouter = createTRPCRouter({
   getRecentlyPlayed: protectedProcedure
@@ -246,7 +252,9 @@ export const spotifyRouter = createTRPCRouter({
 
           return {
             topGenres,
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             max: processedTopGenresArray[0]![1],
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             min: processedTopGenresArray[
               processedTopGenresArray.length - 1
             ]![1],

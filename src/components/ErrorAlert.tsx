@@ -1,6 +1,9 @@
+import { type QueryObserverBaseResult } from "@tanstack/react-query";
+
 interface ErrorAlertProps {
   message?: string;
-  refetch: () => void;
+  refetch: QueryObserverBaseResult['refetch'];
+  // refetch: () => void;
 }
 
 function ErrorAlert(props: ErrorAlertProps) {
@@ -29,7 +32,7 @@ function ErrorAlert(props: ErrorAlertProps) {
       </div>
 
       <div className="flex-none">
-        <button className="btn" onClick={() => refetch()}>
+        <button className="btn" onClick={() => void refetch()}>
           Retry
         </button>
       </div>

@@ -1,4 +1,4 @@
-import { NextPage } from "next/types";
+import { type NextPage } from "next/types";
 import * as Tabs from "@radix-ui/react-tabs";
 import { api } from "~/utils/api";
 import { useState } from "react";
@@ -89,7 +89,10 @@ function Grid(props: GridProps) {
       <div className="flex flex-wrap gap-12">
         {data.topArtists.map((artist, index) => {
           return (
-            <div className="flex flex-col items-center justify-center gap-2">
+            <div
+              className="flex flex-col items-center justify-center gap-2"
+              key={index}
+            >
               <div
                 className="relative h-80 w-80 cursor-pointer"
                 onClick={() => openLinkInNewTab(artist.linkUrl)}

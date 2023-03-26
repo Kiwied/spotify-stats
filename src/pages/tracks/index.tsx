@@ -1,4 +1,4 @@
-import { NextPage } from "next/types";
+import { type NextPage } from "next/types";
 import * as Tabs from "@radix-ui/react-tabs";
 import { api } from "~/utils/api";
 import { useEffect, useState } from "react";
@@ -164,7 +164,7 @@ function CreatePlaylistButton(props: CreatePlaylistButtonProps) {
 
   useEffect(() => {
     reset();
-  }, [currentTab]);
+  }, [currentTab, reset]);
 
   if (status === "error") {
     return <button className="btn-error btn-wide btn">Error</button>;

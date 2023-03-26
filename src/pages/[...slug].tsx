@@ -1,13 +1,13 @@
 import { useRouter } from "next/router";
-import { NextPage } from "next/types";
+import { type NextPage } from "next/types";
 import { useEffect } from "react";
 
 const NotFoundPage: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.push("/");
-  }, []);
+    void router.push("/");
+  }, [router]);
 
   return null;
 };

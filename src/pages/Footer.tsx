@@ -7,8 +7,8 @@ export default function Footer() {
     <footer className="footer items-center p-4">
       <div className="mx-auto flex w-full max-w-[1100px] items-center justify-between">
         <p>
-          © {currentYear} Kiwied - I'm CERTAINLY not related to Spotify AB or
-          any of it's partners in any way
+          © {currentYear} Kiwied - I&#39;m CERTAINLY not related to Spotify AB
+          or any of it&#39;s partners in any way
         </p>
 
         <Link

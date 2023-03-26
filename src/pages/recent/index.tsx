@@ -1,4 +1,4 @@
-import { NextPage } from "next/types";
+import { type NextPage } from "next/types";
 import { api } from "~/utils/api";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
@@ -8,6 +8,7 @@ import LoadingPageContent from "~/components/LoadingPageContent";
 import ErrorAlert from "~/components/ErrorAlert";
 import NoDataAlert from "~/components/NoDataAlert";
 import { openLinkInNewTab } from "~/utils/openLinkInNewTab";
+import CopyrightNotice from "~/components/CopyrightNotice";
 
 dayjs.extend(relativeTime);
 
@@ -108,11 +109,13 @@ function Table() {
           </svg>
           <span>
             NOTE: A track must be played for more than 30 seconds to be included
-            in play history and any tracks listened to while in "Private
-            Session" will not be shown here.
+            in play history and any tracks listened to while in &quot;Private
+            Session&quot; will not be shown here.
           </span>
         </div>
       </div>
+
+      <CopyrightNotice />
     </>
   );
 }

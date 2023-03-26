@@ -76,8 +76,8 @@ function AccountButton() {
 
   const handleLogout = useCallback(() => {
     void signOut();
-    router.push("/");
-  }, []);
+    void router.push("/");
+  }, [router, signOut]);
 
   if (!isLoaded) {
     return (

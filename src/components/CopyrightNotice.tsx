@@ -1,6 +1,6 @@
 function CopyrightNotice() {
   return (
-    <div className="alert mt-10 w-fit shadow-lg">
+    <div className="alert mt-10 w-fit shadow-lg mx-auto">
       <div>
         <svg
           xmlns="http://www.w3.org/2000/svg"
