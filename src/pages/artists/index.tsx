@@ -19,7 +19,7 @@ const TopArtistsPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Spotify Stats - Top Artists</title>
+        <title>Top Artists - Spotify Stats</title>
       </Head>
 
       <h1 className="pb-12 text-center text-4xl font-bold">
@@ -32,19 +32,19 @@ const TopArtistsPage: NextPage = () => {
       >
         <Tabs.List className="tabs mb-4 ">
           <Tabs.Trigger
-            className="tab tab-bordered tab-lg data-[state=active]:tab-active"
+            className="tab-bordered tab tab-lg data-[state=active]:tab-active"
             value={TimeRanges.fourWeeks}
           >
             Last 4 weeks
           </Tabs.Trigger>
           <Tabs.Trigger
-            className="tab tab-bordered tab-lg data-[state=active]:tab-active"
+            className="tab-bordered tab tab-lg data-[state=active]:tab-active"
             value={TimeRanges.sixMonths}
           >
             Last 6 months
           </Tabs.Trigger>
           <Tabs.Trigger
-            className="tab tab-bordered tab-lg data-[state=active]:tab-active"
+            className="tab-bordered tab tab-lg data-[state=active]:tab-active"
             value={TimeRanges.allTime}
           >
             All time

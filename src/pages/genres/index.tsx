@@ -17,7 +17,7 @@ const TopGenresPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Spotify Stats - Top Genres</title>
+        <title>Top Genres - Spotify Stats</title>
       </Head>
 
       <h1 className="pb-12 text-center text-4xl font-bold">

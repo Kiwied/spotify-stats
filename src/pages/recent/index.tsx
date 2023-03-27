@@ -16,7 +16,7 @@ const RecentlyPlayedPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Spotify Stats - Recently played Tracks</title>
+        <title>Recently played Tracks - Spotify Stats</title>
       </Head>
 
       <h1 className="pb-12 text-center text-4xl font-bold">

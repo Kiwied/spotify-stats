@@ -35,7 +35,7 @@ const TopTracksPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Spotify Stats - Top Tracks</title>
+        <title>Top Tracks - Spotify Stats</title>
       </Head>
 
       <h1 className="pb-12 text-center text-4xl font-bold">
