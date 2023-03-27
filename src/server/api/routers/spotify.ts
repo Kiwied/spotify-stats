@@ -215,7 +215,6 @@ export const spotifyRouter = createTRPCRouter({
       z.object({
         topGenres: z.array(z.object({ name: z.string(), value: z.number() })),
         max: z.number(),
-        min: z.number(),
       })
     )
     .query(async ({ ctx, input }) => {
@@ -254,10 +253,6 @@ export const spotifyRouter = createTRPCRouter({
             topGenres,
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             max: processedTopGenresArray[0]![1],
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-            min: processedTopGenresArray[
-              processedTopGenresArray.length - 1
-            ]![1],
           };
         });
 

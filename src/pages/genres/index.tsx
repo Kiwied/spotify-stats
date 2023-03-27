@@ -1,12 +1,13 @@
 import { type NextPage } from "next/types";
 import * as Tabs from "@radix-ui/react-tabs";
-import { api } from "~/utils/api";
+import { api, type RouterOutputs } from "~/utils/api";
 import { useState } from "react";
 import Head from "next/head";
 import LoadingPageContent from "~/components/LoadingPageContent";
 import ErrorAlert from "~/components/ErrorAlert";
 import NoDataAlert from "~/components/NoDataAlert";
 import { getHumanReadableTimeRange, TimeRanges } from "../tracks";
+import { animated, useSpring, easings } from "@react-spring/web";
 
 const TopGenresPage: NextPage = () => {
   const [currentTab, setCurrentTab] = useState<TimeRanges>(
@@ -29,19 +30,19 @@ const TopGenresPage: NextPage = () => {
       >
         <Tabs.List className="tabs mb-4">
           <Tabs.Trigger
-            className="tab tab-bordered tab-lg data-[state=active]:tab-active"
+            className="tab-bordered tab tab-lg data-[state=active]:tab-active"
             value={TimeRanges.fourWeeks}
           >
             Last 4 weeks
           </Tabs.Trigger>
           <Tabs.Trigger
-            className="tab tab-bordered tab-lg data-[state=active]:tab-active"
+            className="tab-bordered tab tab-lg data-[state=active]:tab-active"
             value={TimeRanges.sixMonths}
           >
             Last 6 months
           </Tabs.Trigger>
           <Tabs.Trigger
-            className="tab tab-bordered tab-lg data-[state=active]:tab-active"
+            className="tab-bordered tab tab-lg data-[state=active]:tab-active"
             value={TimeRanges.allTime}
           >
             All time
@@ -83,16 +84,38 @@ function GenreList(props: GenreListProps) {
 
   return (
     <div className="flex flex-col gap-4 text-lg">
-      {data.topGenres.map(({ name, value }, index) => (
-        <div className="flex flex-col gap-2" key={index}>
-          {index + 1}. {capitalize(name)}
-          <progress
-            className="progress progress-primary h-6"
-            value={value}
-            max={data.max}
-          />
-        </div>
+      {data.topGenres.map((genre, index) => (
+        <ProgressBar key={index} genre={genre} index={index} max={data.max} />
       ))}
+    </div>
+  );
+}
+
+interface ProgressBarProps {
+  genre: RouterOutputs["spotify"]["getTopGenres"]["topGenres"][number];
+  max: RouterOutputs["spotify"]["getTopGenres"]["max"];
+  index: number;
+}
+
+function ProgressBar(props: ProgressBarProps) {
+  const { genre, index, max } = props;
+
+  const spring = useSpring({
+    value: genre.value / max,
+    from: { value: 0 },
+    config: { duration: 1000, easing: easings.easeOutCirc },
+  });
+
+  return (
+    <div className="flex flex-col gap-2">
+      <span>
+        {index + 1}. {capitalize(genre.name)}
+      </span>
+      <animated.progress
+        className="progress progress-primary h-6"
+        value={spring.value}
+        max={1}
+      />
     </div>
   );
 }
